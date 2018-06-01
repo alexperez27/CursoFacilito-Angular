@@ -1,0 +1,10 @@
+<h3>
+  Articulos: {{articleS.articlesCount}}
+</h3>
+
+<h3>Mis repositorios</h3>
+{{articleS.reposObserver | async | json}}
+
+<ul [class.show]="(articleS.reposObserver | async)?.length > 0">
+  <li *ngFor="let repo of articleS.reposObserver | async">{{repo.name}}</li>
+</ul>

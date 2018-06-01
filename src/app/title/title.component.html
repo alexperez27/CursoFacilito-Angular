@@ -1,0 +1,39 @@
+<h1>Curso Angular</h1>
+<h3 [redBorder]="'red'" [classElement]="'prueba-clase'" >Tutor: {{ name }}</h3>
+
+<div [@showUp]="moreInformation">
+  <a (click)="toggleMoreInformation()">Más Información <i class="fa "
+    [class.fa-chevron-circle-down]="!moreInformation"
+    [class.fa-chevron-circle-up]="moreInformation"
+    ></i> </a>
+  <p *ngIf="moreInformation">{{duration | secondsToTimeFormat: false}}  ajsdflkjsadfkjadslfsadfd</p>
+</div>
+
+<p *ngIf="!isAvailable; else available">Lanzamiento: {{launchDate | date:"dd MMM y HH:mm:ss" |uppercase}}</p>
+<h3>{{ getEdadNombre() }}</h3>
+
+<ng-template #available><!-- #available -> variable de referencia del template -->
+  <span class="highlight">Curso disponible</span>
+</ng-template>
+
+<br>Property binding<br>
+<button [disabled]="!isAvailable || !subscribed" [class.active]="isAvailable && subscribed" type="button" name="button">Inscribir</button>
+<br>
+<br>Condicionales<br>
+<button [disabled]="!isAvailable" [ngClass]="{active: isAvailable, shadow: !isAvailable}" type="button" name="button">Inscribir</button>
+<br>
+<br>ngClass<br>
+<div>
+  <button [disabled]="!isAvailable" [ngClass]="css_classes" type="button" name="button">Inscribir {{price | currency:'C$'}}</button>
+</div>
+
+<div class="category" [ngSwitch]="category">
+  <span *ngSwitchCase="'web'">Desarrollo web</span>
+  <span *ngSwitchCase="'mobile'">Móvil</span>
+  <span *ngSwitchCase="'other'">Otro</span>
+  <span *ngSwitchDefault>N/D</span>
+</div>
+
+<ul>
+  <li *ngFor="let topic of topics; index as posicion">{{posicion+1}}.{{topic}}</li>
+</ul>
